@@ -1,31 +1,14 @@
 import express from 'express';
 import Student from '../Models/student.js';
+import { getStudents, createStudent, deleteStudent } from '../controllers/studentController.js';
 
 // create student router
 const studentRouter = express.Router();
 
-studentRouter.get("/",(req,res)=>{
-   Student.find().then(
-    (studentList)=>{
-        res.json({
-            list:studentList
-        })
-   })
-})
+studentRouter.get("/",getStudents)
 
-studentRouter.post("/",(req,res)=>{
-    const student = new Student(req.body)
-    student.save().then(()=>{
-        res.json({
-            message:"Student is created"
-        })
-    }).catch(()=>{
-        res.json({
-            message:"Student is not created"
-        })
-    })
+studentRouter.post("/",createStudent)
 
-   
-})
+studentRouter.delete("/",deleteStudent)
 
 export default studentRouter;
