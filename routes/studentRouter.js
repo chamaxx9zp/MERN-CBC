@@ -1,20 +1,31 @@
 import express from 'express';
+import Student from '../Models/student.js';
 
 // create student router
 const studentRouter = express.Router();
 
 studentRouter.get("/",(req,res)=>{
-    console.log("This is a request for student get router");
-    res.json({
-        message: "This is a get request for the student router"
-    })
+   Student.find().then(
+    (studentList)=>{
+        res.json({
+            list:studentList
+        })
+   })
 })
 
 studentRouter.post("/",(req,res)=>{
-    console.log("This is a request for student post router");
-    res.json({
-        message: "This is a post request for the student router"
+    const student = new Student(req.body)
+    student.save().then(()=>{
+        res.json({
+            message:"Student is created"
+        })
+    }).catch(()=>{
+        res.json({
+            message:"Student is not created"
+        })
     })
+
+   
 })
 
 export default studentRouter;
