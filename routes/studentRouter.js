@@ -1,5 +1,4 @@
 import express from 'express';
-import Student from '../Models/student.js';
 import { getStudents, createStudent, deleteStudent } from '../controllers/studentController.js';
 
 // create student router
