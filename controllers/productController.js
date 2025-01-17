@@ -32,3 +32,21 @@ export function deleteProduct(req,res){
         }
     )
 }
+
+export function getProductbyName(req,res){
+    const Pname = req.body.name
+
+    Product.find({name:Pname}).then(
+        (productList)=>{
+            res.json({
+                list : productList
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message: "product found error"
+            })
+        }
+    )
+}
