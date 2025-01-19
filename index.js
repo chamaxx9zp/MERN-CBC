@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import Student from './Models/student.js';
 import studentRouter from './routes/studentRouter.js';
 import productRouter from './routes/productRouter.js';
+import userRouter from './routes/userRouter.js';
 
 
 
@@ -21,6 +21,7 @@ app.use(bodyParser.json())
 
 app.use("/students",studentRouter)
 app.use("/products",productRouter)
+app.use("/users",userRouter)
 
 // app.get("/",
 //     (req,res)=>{
