@@ -8,8 +8,6 @@ userRouter.get("/",getUsers)
 userRouter.post("/",createUser)
 userRouter.post("/login",loginUser)
 
-// studentRouter.delete("/",deleteStudent)
-
 export default userRouter;
 
 // admin account - admin@gmail.com

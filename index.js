@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
+import productRouter from './routes/productRouter.js';
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 dotenv.config()
@@ -35,6 +36,7 @@ app.use(
     })
 
 app.use("/users",userRouter)
+app.use("/products",productRouter)
 
 
 app.listen(
