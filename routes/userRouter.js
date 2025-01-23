@@ -11,3 +11,9 @@ userRouter.post("/login",loginUser)
 // studentRouter.delete("/",deleteStudent)
 
 export default userRouter;
+
+// admin account - admin@gmail.com
+// password - admin123
+
+// customer account - mncustomer@gmail.com
+// password - customer123
