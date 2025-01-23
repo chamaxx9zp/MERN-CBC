@@ -26,7 +26,7 @@ app.use(
         const token = req.header("authorization")?.replace("Bearer ","")
         // console.log(req)
         if(token != null){
-            jwt.verify(token,"cbc-secret-key-12345", (error,decoded) => {
+            jwt.verify(token,process.env.SECRET, (error,decoded) => {
                 if(!error){
                     // console.log(decoded)
                     req.user = decoded
