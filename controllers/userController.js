@@ -1,5 +1,6 @@
 import User from "../Models/user.js";
 import bcrypt from "bcrypt";
+import jsonwebtoken from "jsonwebtoken";
 
 export function createUser(req,res){
 
@@ -39,8 +40,18 @@ export function loginUser(req,res){
                 const isPasswordCorrect = bcrypt.compareSync(req.body.password,user.password)
 
                 if (isPasswordCorrect){
+                    const token = jsonwebtoken.sign({
+                        email : user.email,
+                        firstName : user.firstName,
+                        lastName : user.lastName,
+                        isBlocked : user.isBlocked,
+                        type : user.type,
+                        profilePic : user.profilePic
+                    },"cbc-secret-key-12345")
+                    // console.log(token)
                     res.json({
-                        message: "User Logged In"
+                        message : "User logged In",
+                        token : token
                     })
                 }else{
                     res.json({
@@ -51,3 +62,6 @@ export function loginUser(req,res){
         }
     )
 }
+
+// admin account - admin@gmail.com
+// password - admin123

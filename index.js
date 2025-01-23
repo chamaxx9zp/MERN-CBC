@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import studentRouter from './routes/studentRouter.js';
 import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
+import jwt from 'jsonwebtoken';
 
 
 
@@ -18,6 +19,20 @@ connection.once("open", ()=>{
 
 
 app.use(bodyParser.json())
+app.use(
+    (req,res,next)=>{
+        const token = req.header("authorization")?.replace("Bearer ","")
+        // console.log(req)
+        if(token != null){
+            jwt.verify(token,"cbc-secret-key-12345", (error,decoded) => {
+                if(!error){
+                    // console.log(decoded)
+                    req.user = decoded
+                }
+            })
+        }
+        next()
+    })
 
 app.use("/students",studentRouter)
 app.use("/products",productRouter)
