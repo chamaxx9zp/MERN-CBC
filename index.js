@@ -5,12 +5,14 @@ import studentRouter from './routes/studentRouter.js';
 import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from 'jsonwebtoken';
+import dotenv from "dotenv";
+dotenv.config()
 
 
 
 const app = express();
 
-const mongoURL = "mongodb+srv://admin2:12345@clustermern.xn93y.mongodb.net/?retryWrites=true&w=majority&appName=ClusterMERN"
+const mongoURL = process.env.MONGO_DB_URL
 mongoose.connect(mongoURL,{})
 const connection = mongoose.connection;
 connection.once("open", ()=>{
