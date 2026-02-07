@@ -2,6 +2,8 @@
 import express from "express";
 // Importing body-parser to parse incoming JSON requests
 import bodyParser from "body-parser";
+// Importing cors to enable cross-origin requests
+import cors from "cors";
 // Importing mongoose to connect and interact with the MongoDB database
 import mongoose from "mongoose";
 // Importing userRouter to handle user-related routes
@@ -29,6 +31,9 @@ connection.once("open", () => {
 
 // Middleware to parse incoming JSON requests
 app.use(bodyParser.json());
+
+// Enable CORS for all origins (e.g. frontend on different port/origin)
+app.use(cors());
 
 // Middleware to decode and verify JWT tokens from the "authorization" header
 app.use((req, res, next) => {
