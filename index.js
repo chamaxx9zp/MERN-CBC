@@ -48,7 +48,7 @@ app.use("/users", userRouter); // Routes for user-related operations
 app.use("/products", productRouter); // Routes for product-related operations
 app.use("/orders", orderRouter); // Routes for order-related operations
 
-// Start the server and listen on port 3001
-app.listen(3001, () => {
-  console.log("app run on port 3001"); // Log a message when the server starts successfully
+// Start the server and listen on port 5001
+app.listen(5001, () => {
+  console.log("app run on port 5001"); // Log a message when the server starts successfully
 });
