@@ -20,7 +20,7 @@ export function createUser(req, res) {
       res.json({
         message: "Please login as administrator to create admin accounts",
       });
-      return; // Exit the function to prevent further execution
+      return;
     }
   }
 
@@ -85,6 +85,11 @@ export function loginUser(req, res) {
         res.json({
           message: "User logged In",
           token: token,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          type: user.type,
+          profilePic: user.profilePic,
         });
       } else {
         res.json({
